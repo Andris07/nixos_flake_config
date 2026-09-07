@@ -1,5 +1,5 @@
 {
-  description = "NixOS Flake Configuration";
+  description = "NixOS Configuration";
 
   inputs =
   {
@@ -8,15 +8,27 @@
 
   outputs = { nixpkgs, ... }:
   {
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem
+    nixosConfigurations =
     {
-      system = "x86_64-linux";
+      desktop = nixpkgs.lib.nixosSystem
+      {
+        system = "x86_64-linux";
 
-      modules =
-      [
-        ./hardware-configuration.nix
-        ./configuration.nix
-      ];
+        modules =
+        [
+          ./hosts/desktop/configuration.nix
+        ];
+      };
+
+      laptop = nixpkgs.lib.nixosSystem
+      {
+        system = "x86_64-linux";
+
+        modules =
+        [
+          ./hosts/laptop/configuration.nix
+        ];
+      };
     };
   };
 }
