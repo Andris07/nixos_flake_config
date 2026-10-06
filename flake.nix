@@ -4,27 +4,30 @@
   inputs =
   {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+
+    home-manager =
+    {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { nixpkgs, ... }:
+  outputs = { nixpkgs, home-manager, ... }:
+  let
+    mkHost = hostName: nixpkgs.lib.nixosSystem
+    {
+      modules =
+      [
+        ./hosts/${hostName}/configuration.nix
+        home-manager.nixosModules.home-manager
+      ];
+    };
+  in
   {
     nixosConfigurations =
     {
-      desktop = nixpkgs.lib.nixosSystem
-      {
-        modules =
-        [
-          ./hosts/desktop/configuration.nix
-        ];
-      };
-
-      laptop = nixpkgs.lib.nixosSystem
-      {
-        modules =
-        [
-          ./hosts/laptop/configuration.nix
-        ];
-      };
+      desktop = mkHost "desktop";
+      laptop = mkHost "laptop";
     };
   };
 }
