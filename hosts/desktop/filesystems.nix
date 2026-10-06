@@ -1,42 +1,40 @@
+let
+  rootDevice = "/dev/disk/by-uuid/ed069aaa-12fa-4644-ac6f-e41fbf79bc11";
+
+  btrfsOptions =
+  [
+    "compress=zstd"
+    "noatime"
+  ];
+in
 {
   fileSystems."/" =
   {
-    device = "/dev/disk/by-uuid/ed069aaa-12fa-4644-ac6f-e41fbf79bc11";
+    device = rootDevice;
     fsType = "btrfs";
-    options =
-    [
-      "subvol=@"
-    ];
+    options = [ "subvol=@" ] ++ btrfsOptions;
   };
 
   fileSystems."/home" =
   {
-    device = "/dev/disk/by-uuid/ed069aaa-12fa-4644-ac6f-e41fbf79bc11";
+    device = rootDevice;
     fsType = "btrfs";
-    options =
-    [
-      "subvol=@home"
-    ];
+    options = [ "subvol=@home" ] ++ btrfsOptions;
   };
 
   fileSystems."/nix" =
   {
-    device = "/dev/disk/by-uuid/ed069aaa-12fa-4644-ac6f-e41fbf79bc11";
+    device = rootDevice;
     fsType = "btrfs";
-    options =
-    [
-      "subvol=@nix"
-    ];
+    options = [ "subvol=@nix" ] ++ btrfsOptions;
   };
 
-  fileSystems."/log" =
+  fileSystems."/var/log" =
   {
-    device = "/dev/disk/by-uuid/ed069aaa-12fa-4644-ac6f-e41fbf79bc11";
+    device = rootDevice;
     fsType = "btrfs";
-    options =
-    [
-      "subvol=@log"
-    ];
+    options = [ "subvol=@log" ] ++ btrfsOptions;
+    neededForBoot = true;
   };
 
   fileSystems."/boot" =
