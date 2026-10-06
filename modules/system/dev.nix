@@ -3,10 +3,9 @@
 {
   environment.systemPackages = with pkgs;
   [
-    vim
-    wget
-    git
-    gh
-    tree
+    nil
+    nixfmt
+    gnumake
+    fastfetch
   ];
 }
