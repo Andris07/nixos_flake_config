@@ -3,6 +3,7 @@
   [
     ./apps.nix
     ./git.nix
+    ./hyprland.nix
     ./shell.nix
   ];
 

@@ -3,7 +3,10 @@
   [
     ../modules/boot/kernel.nix
 
-    ../modules/desktop/niri.nix
+    ../modules/desktop/base.nix
+    
+    ../modules/desktop/wm/hyprland.nix
+    ../modules/desktop/wm/niri.nix
 
     ../modules/system/core.nix
     ../modules/system/dev.nix
