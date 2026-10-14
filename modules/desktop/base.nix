@@ -3,6 +3,8 @@
 {
   services.displayManager.ly.enable = true;
 
+  programs.serpantinum.enable = true;
+
   services.pipewire =
   {
     enable = true;
@@ -29,5 +31,7 @@
     alacritty
     fuzzel
     wl-clipboard
+    cliphist
+    xwayland-satellite
   ];
 }
