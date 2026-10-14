@@ -3,7 +3,7 @@
   {
     enable = true;
 
-    # package is given by the NixOS modul (programs.hyprland)
+    # The NixOS module provides Hyprland and its package, but you can override them with your own packages if you want.
     package = null;
     portalPackage = null;
 
@@ -13,14 +13,21 @@
       hl.config({
         input = {
           kb_layout = "hu",
+          kb_variant = "",
         },
       })
 
-      hl.bind("SUPER + T", hl.dsp.exec_cmd("alacritty"))
-      hl.bind("SUPER + D", hl.dsp.exec_cmd("fuzzel"))
-      hl.bind("SUPER + C", hl.dsp.window.close())
-      hl.bind("SUPER + F", hl.dsp.window.fullscreen({ mode = "fullscreen" }))
-      hl.bind("SUPER + V", hl.dsp.window.float({}))
+      hl.on("hyprland.start", function()
+        hl.exec_cmd("serpantinumd start")
+        hl.exec_cmd("wl-paste --type text --watch cliphist store")
+        hl.exec_cmd("wl-paste --type image --watch cliphist store")
+      end)
+
+      -- Avoid collisions with Serpantinum's own global shortcuts.
+      hl.bind("SUPER + Return", hl.dsp.exec_cmd("alacritty"))
+      hl.bind("ALT + F4", hl.dsp.window.close())
+      hl.bind("SUPER + SHIFT + F", hl.dsp.window.float({}))
+      hl.bind("SUPER + SHIFT + Space", hl.dsp.window.fullscreen({ mode = "fullscreen" }))
       hl.bind("SUPER + SHIFT + E", hl.dsp.exit())
 
       hl.bind("SUPER + left", hl.dsp.focus({ direction = "left" }))
