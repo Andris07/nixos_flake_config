@@ -1,10 +1,23 @@
-{ pkgs, ... }:
-
 {
-  programs.niri.enable = true;
+  programs.niri =
+  {
+    enable = true;
 
-  environment.systemPackages = with pkgs;
-  [
-    xwayland-satellite
-  ];
+    settings =
+    {
+      input.keyboard.xkb =
+      {
+        layout = "hu";
+        variant = "";
+      };
+
+      # Keep the shell available in Niri sessions.
+      spawn-at-startup =
+      [
+        {
+          command = [ "serpantinumd" "start" ];
+        }
+      ];
+    };
+  };
 }
