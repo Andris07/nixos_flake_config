@@ -4,6 +4,7 @@
     ./apps.nix
     ./git.nix
     ./hyprland.nix
+    ./niri.nix
     ./serpantinum.nix
     ./shell.nix
   ];
