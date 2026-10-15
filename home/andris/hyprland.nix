@@ -3,7 +3,7 @@
   {
     enable = true;
 
-    # The NixOS module provides Hyprland and its package, but you can override them with your own packages if you want.
+    # The NixOS module provides Hyprland and its portal
     package = null;
     portalPackage = null;
 
@@ -26,6 +26,7 @@
       -- Avoid collisions with Serpantinum's own global shortcuts.
       hl.bind("SUPER + Return", hl.dsp.exec_cmd("alacritty"))
       hl.bind("ALT + F4", hl.dsp.window.close())
+      hl.bind("SUPER + Q", hl.dsp.window.close())
       hl.bind("SUPER + SHIFT + F", hl.dsp.window.float({}))
       hl.bind("SUPER + SHIFT + Space", hl.dsp.window.fullscreen({ mode = "fullscreen" }))
       hl.bind("SUPER + SHIFT + E", hl.dsp.exit())
