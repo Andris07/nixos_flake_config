@@ -17,12 +17,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    niri =
-    {
-      url = "github:sodiboo/niri-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     serpantinum =
     {
       url = "github:ilyamiro/serpantinum";
@@ -30,23 +24,17 @@
     };
   };
 
-  outputs = { nixpkgs, disko, home-manager, niri, serpantinum, ... }:
+  outputs = { nixpkgs, disko, home-manager, serpantinum, ... }:
   let
     mkHost = hostName: nixpkgs.lib.nixosSystem
     {
-      specialArgs =
-      {
-        inherit serpantinum;
-        inherit niri;
-      };
+      specialArgs = { inherit serpantinum; };
 
       modules =
       [
         ./hosts/${hostName}/configuration.nix
-
         disko.nixosModules.disko
         home-manager.nixosModules.home-manager
-        niri.nixosModules.niri
         serpantinum.nixosModules.default
       ];
     };
