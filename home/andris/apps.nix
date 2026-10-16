@@ -7,5 +7,6 @@
   [
     vscode
     discord
+    vlc
   ];
 }

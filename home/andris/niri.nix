@@ -27,6 +27,7 @@
       Mod+Shift+F { fullscreen-window; }
 
       Mod+V { toggle-window-floating; }
+      Mod+Shift+V { switch-focus-between-floating-and-tiling; }
 
       Mod+Shift+E { quit; }
 
@@ -95,7 +96,7 @@
       Mod+F1 { show-hotkey-overlay; }
 
       // Clipboard history
-      Mod+Shift+V {
+      Mod+C {
         spawn "sh" "-c" "cliphist list | fuzzel --dmenu | cliphist decode | wl-copy";
       }
     }
