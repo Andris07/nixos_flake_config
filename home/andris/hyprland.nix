@@ -28,7 +28,7 @@
       -- Applications
       hl.bind("SUPER + Return", hl.dsp.exec_cmd("alacritty"))
       hl.bind("SUPER + D", hl.dsp.exec_cmd("fuzzel"))
-      hl.bind("SUPER + B", hl.dsp.exec_cmd("firefox"))
+      hl.bind("SUPER + W", hl.dsp.exec_cmd("firefox"))
 
       -- Window management
       hl.bind("ALT + F4", hl.dsp.window.close())
