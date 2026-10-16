@@ -17,13 +17,17 @@
       // Applications
       Mod+Return { spawn "alacritty"; }
       Mod+D { spawn "fuzzel"; }
-      Mod+B { spawn "firefox"; }
+      Mod+W { spawn "firefox"; }
 
       // Window management
       Mod+Q { close-window; }
       Alt+F4 { close-window; }
-      Mod+F { fullscreen-window; }
-      Mod+Shift+Space { toggle-window-floating; }
+
+      Mod+F { maximize-column; }
+      Mod+Shift+F { fullscreen-window; }
+
+      Mod+V { toggle-window-floating; }
+
       Mod+Shift+E { quit; }
 
       // Focus navigation
@@ -48,6 +52,13 @@
       Mod+Shift+K { move-window-up; }
       Mod+Shift+J { move-window-down; }
 
+      // Workspace navigation
+      Mod+Ctrl+J { focus-workspace-down; }
+      Mod+Ctrl+K { focus-workspace-up; }
+
+      Mod+Ctrl+Shift+J { move-column-to-workspace-down; }
+      Mod+Ctrl+Shift+K { move-column-to-workspace-up; }
+
       // Workspaces
       Mod+1 { focus-workspace 1; }
       Mod+2 { focus-workspace 2; }
@@ -68,6 +79,20 @@
       Mod+Shift+7 { move-column-to-workspace 7; }
       Mod+Shift+8 { move-column-to-workspace 8; }
       Mod+Shift+9 { move-column-to-workspace 9; }
+
+      // Layout
+      Mod+R { switch-preset-column-width; }
+      Mod+Shift+R { switch-preset-column-width-back; }
+
+      // Window arrangement
+      Mod+Ctrl+Comma  { consume-or-expel-window-left; }
+      Mod+Ctrl+Period { consume-or-expel-window-right; }
+
+      // Overview
+      Mod+Tab { toggle-overview; }
+
+      // Hotkey help
+      Mod+F1 { show-hotkey-overlay; }
 
       // Clipboard history
       Mod+Shift+V {
