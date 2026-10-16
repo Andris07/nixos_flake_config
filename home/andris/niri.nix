@@ -85,8 +85,8 @@
       Mod+Shift+R { switch-preset-column-width-back; }
 
       // Window arrangement
-      Mod+Ctrl+Comma  { consume-or-expel-window-left; }
-      Mod+Ctrl+Period { consume-or-expel-window-right; }
+      Mod+A { consume-or-expel-window-left; }
+      Mod+S { consume-or-expel-window-right; }
 
       // Overview
       Mod+Tab { toggle-overview; }
