@@ -14,15 +14,41 @@
     spawn-at-startup "wl-paste" "--type" "image" "--watch" "cliphist" "store"
 
     binds {
+      // Applications
       Mod+Return { spawn "alacritty"; }
+      Mod+D { spawn "fuzzel"; }
+      Mod+B { spawn "firefox"; }
+
+      // Window management
       Mod+Q { close-window; }
+      Alt+F4 { close-window; }
+      Mod+F { fullscreen-window; }
+      Mod+Shift+Space { toggle-window-floating; }
       Mod+Shift+E { quit; }
 
+      // Focus navigation
       Mod+Left { focus-column-left; }
       Mod+Right { focus-column-right; }
       Mod+Up { focus-window-up; }
       Mod+Down { focus-window-down; }
 
+      Mod+H { focus-column-left; }
+      Mod+L { focus-column-right; }
+      Mod+K { focus-window-up; }
+      Mod+J { focus-window-down; }
+
+      // Move windows
+      Mod+Shift+Left { move-column-left; }
+      Mod+Shift+Right { move-column-right; }
+      Mod+Shift+Up { move-window-up; }
+      Mod+Shift+Down { move-window-down; }
+
+      Mod+Shift+H { move-column-left; }
+      Mod+Shift+L { move-column-right; }
+      Mod+Shift+K { move-window-up; }
+      Mod+Shift+J { move-window-down; }
+
+      // Workspaces
       Mod+1 { focus-workspace 1; }
       Mod+2 { focus-workspace 2; }
       Mod+3 { focus-workspace 3; }
@@ -42,6 +68,11 @@
       Mod+Shift+7 { move-column-to-workspace 7; }
       Mod+Shift+8 { move-column-to-workspace 8; }
       Mod+Shift+9 { move-column-to-workspace 9; }
+
+      // Clipboard history
+      Mod+Shift+V {
+        spawn "sh" "-c" "cliphist list | fuzzel --dmenu | cliphist decode | wl-copy";
+      }
     }
   '';
 }
