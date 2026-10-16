@@ -23,19 +23,27 @@
         hl.exec_cmd("wl-paste --type image --watch cliphist store")
       end)
 
-      -- Avoid collisions with Serpantinum's own global shortcuts.
+      -- Avoid collisions with Serpantinum's own global shortcuts
+
+      -- Applications
       hl.bind("SUPER + Return", hl.dsp.exec_cmd("alacritty"))
+      hl.bind("SUPER + D", hl.dsp.exec_cmd("fuzzel"))
+      hl.bind("SUPER + B", hl.dsp.exec_cmd("firefox"))
+
+      -- Window management
       hl.bind("ALT + F4", hl.dsp.window.close())
       hl.bind("SUPER + Q", hl.dsp.window.close())
-      hl.bind("SUPER + SHIFT + F", hl.dsp.window.float({}))
-      hl.bind("SUPER + SHIFT + Space", hl.dsp.window.fullscreen({ mode = "fullscreen" }))
+      hl.bind("SUPER + F", hl.dsp.window.fullscreen({ mode = "fullscreen" }))
+      hl.bind("SUPER + SHIFT + Space", hl.dsp.window.float({}))
       hl.bind("SUPER + SHIFT + E", hl.dsp.exit())
 
+      -- Focus navigation
       hl.bind("SUPER + left", hl.dsp.focus({ direction = "left" }))
       hl.bind("SUPER + right", hl.dsp.focus({ direction = "right" }))
       hl.bind("SUPER + up", hl.dsp.focus({ direction = "up" }))
       hl.bind("SUPER + down", hl.dsp.focus({ direction = "down" }))
 
+      -- Workspaces
       for i = 1, 9 do
         hl.bind("SUPER + " .. i, hl.dsp.focus({ workspace = tostring(i) }))
         hl.bind("SUPER + SHIFT + " .. i, hl.dsp.window.move({ workspace = tostring(i) }))
@@ -43,6 +51,14 @@
 
       hl.bind("SUPER + mouse:272", hl.dsp.window.drag())
       hl.bind("SUPER + mouse:273", hl.dsp.window.resize())
+
+      -- Clipboard history
+      hl.bind(
+        "SUPER + SHIFT + V",
+        hl.dsp.exec_cmd(
+          "sh -c 'cliphist list | fuzzel --dmenu | cliphist decode | wl-copy'"
+        )
+      )
     '';
   };
 }
