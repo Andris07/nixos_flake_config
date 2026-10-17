@@ -5,8 +5,9 @@
 
   home.packages = with pkgs;
   [
-    vscode
     discord
+    obsidian
     vlc
+    vscode
   ];
 }
