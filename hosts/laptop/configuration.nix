@@ -5,6 +5,7 @@
 
     ./disko.nix
     ./hardware.nix
+    ./touchscreen.nix
 
     ../../modules/boot/grub.nix
     ../../modules/hardware/amd.nix

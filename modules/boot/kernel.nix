@@ -5,7 +5,7 @@
 
   boot.kernelParams =
   [
-    "i2c_hid.ignore_dmi_i2c_gpios=1"
+    "i2c_designware.disable_d3=1"
     "pinctrl_amd.cpuid_override=1"
   ];
 }
