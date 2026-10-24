@@ -1,3 +1,5 @@
+{ pkgs, ... }:
+
 {
   imports =
   [
@@ -15,6 +17,11 @@
 
   services.upower.enable = true;
   services.xserver.wacom.enable = true;
+
+  environment.systemPackages =
+  [
+    pkgs.snapshot
+  ];
 
   # Disko manages the unencrypted EFI partition and the LUKS2-encrypted Btrfs
   # filesystem, including /, /home, /var/log, /nix, /games and a Btrfs swapfile.

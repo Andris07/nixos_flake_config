@@ -1,5 +1,16 @@
 {
   xdg.configFile."niri/config.kdl".text = ''
+    output "DP-1" {
+      mode "2560x1440"
+      position x=0 y=0
+      focus-at-startup
+    }
+
+    output "HDMI-A-1" {
+      mode "1920x1080"
+      position x=2560 y=0
+    }
+
     input {
       keyboard {
         xkb {
