@@ -5,6 +5,7 @@
   [
     ../common.nix
 
+    ./apps.nix
     ./disko.nix
     ./hardware.nix
     ./touchscreen.nix

@@ -9,5 +9,6 @@
     obsidian
     vlc
     vscode
+    github-desktop
   ];
 }
